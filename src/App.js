@@ -8,7 +8,7 @@ import TodoItem from './components/TodoItem';
 //github test change
 //this project is integrated with github, git, and netlify (connected via github)
 function App() {
-  this.state={
+  const state={
     items:[{id:1, title:'wake up'}, {id:2, title:'make breakfast'}],
     id: uuidv4(),
     item:'', 
@@ -21,18 +21,31 @@ function App() {
 
   clearList = (e)=>{console.log('clear list')}
 
-  handleEdit = (e)=>{console.log('handle edit')}
+  handleEdit = (e)=>{console.log(`handle edit ${id}`)}
 
-  handleDelete = (id)=>{console.log(`handle edit ${id}`)}
+  handleDelete = (id)=>{console.log(`handle delete ${id}`)}
 
 
   return (
     <div >
       <div className="container">
         <div className="row">
-        .col-10.mx-auto.col-md-8.mt-4
-          <TodoInput/>
-          <TodoList/>
+          <div className= "col-10.mx-auto.col-md-8.mt-5">
+          <h3 className="text-capitalized text-center">
+            todo input
+          </h3>
+            </div>
+              <TodoInput item={this.state.item} 
+              handleChange= {this.handleChange} 
+              handleSubmit= {this.handleSubmit} 
+              editItem={this.state.editItem}
+              />
+              <TodoList 
+              items={this.state.items} 
+              clearList={this.clearList} 
+              handleDelete={this.handleDelete} 
+              handleEdit={this.handleEdit}
+              />
 
 
         </div>
