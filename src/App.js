@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { useState } from 'react';
 import {v4 as uuidv4 } from 'uuid';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TodoInput from './components/TodoInput';
@@ -10,15 +9,33 @@ import TodoItem from './components/TodoItem';
 class App extends Component {
   
   state={
-    items:[{id:1, title:'wake up'}, {id:2, title:'make breakfast'}],
+    items:[],
     id: uuidv4(),
     item:"", 
     editItem:false
   };
 
-  handleChange = e=>{console.log('handle change')};
+  handleChange = e=>{
+    this.setState({
+      item: e.target.value
+    })
+  };
 
-  handleSubmit = e=>{console.log('handle submit')};
+  handleSubmit = e=>{
+    e.preventDefault();
+    const newItem = {
+      id:this.state.id,
+      title:this.state.item
+    };
+    const updatedItems = [...this.state.items, newItem]
+    this.setState({
+      items:updatedItems,
+      item:'',
+      id:uuidv4(),
+      editItem:false
+    },
+    () =>     console.log(this.state));
+  };
 
   clearList = e=>{console.log('clear list')};
 
@@ -26,7 +43,6 @@ class App extends Component {
 
   handleDelete = id=>{console.log(`handle delete ${id}`)};
   render() {
-
   return (
     <div >
       <div className="container">
