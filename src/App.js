@@ -7,24 +7,25 @@ import TodoList from './components/TodoList';
 import TodoItem from './components/TodoItem';
 //github test change
 //this project is integrated with github, git, and netlify (connected via github)
-function App() {
-  const state={
+class App extends Component {
+  
+  state={
     items:[{id:1, title:'wake up'}, {id:2, title:'make breakfast'}],
     id: uuidv4(),
-    item:'', 
+    item:"", 
     editItem:false
   };
 
-  handleChange = (e)=>{console.log('handle change')}
+  handleChange = e=>{console.log('handle change')};
 
-  handleSubmit = (e)=>{console.log('handle submit')}
+  handleSubmit = e=>{console.log('handle submit')};
 
-  clearList = (e)=>{console.log('clear list')}
+  clearList = e=>{console.log('clear list')};
 
-  handleEdit = (e)=>{console.log(`handle edit ${id}`)}
+  handleEdit = id=>{console.log(`handle edit ${id}`)};
 
-  handleDelete = (id)=>{console.log(`handle delete ${id}`)}
-
+  handleDelete = id=>{console.log(`handle delete ${id}`)};
+  render() {
 
   return (
     <div >
@@ -52,6 +53,7 @@ function App() {
       </div>
     </div>
   );
+  }
 }
 
 export default App;

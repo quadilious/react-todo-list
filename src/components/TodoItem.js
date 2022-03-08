@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
-function TodoItem() {
-    return (
-      <div>hello from todo item</div>
-    )
+export default class TodoItem extends Component {
+  render() {
+    return <div>hello from todo item</div>;
+  }
 }
-export default TodoItem
